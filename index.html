@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c5a059;
+            --primary-dark: #9e7d3b;
+            --bg-color: #fcfbf7;
+            --text-dark: #2c2c2c;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            text-align: center;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: relative;
+            padding-bottom: 50px;
+        }
+        .header {
+            padding: 60px 20px 30px;
+            background: linear-gradient(180deg, rgba(197,160,89,0.1) 0%, rgba(255,255,255,0) 100%);
+        }
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: #777;
+            text-transform: uppercase;
+        }
+        .couples-names {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .and { font-size: 1.8rem; color: var(--primary); display: block; margin: -10px 0; }
+        .card {
+            background: var(--white);
+            margin: 20px;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(197,160,89,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .countdown { display: flex; justify-content: space-around; margin-top: 15px; }
+        .time-box { background: var(--bg-color); padding: 10px; border-radius: 10px; min-width: 65px; }
+        .time-box span { display: block; font-size: 1.4rem; font-weight: bold; color: var(--primary-dark); }
+        .time-box label { font-size: 0.75rem; color: #666; }
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+        .btn:hover { background: var(--primary-dark); }
+        .form-group { margin-bottom: 15px; text-align: right; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 0.9rem; font-weight: 600; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Cairo';
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="bismillah">بسم الله الرحمن الرحيم</div>
+            <div class="title">يسرنا دعوتكم لحضور حفل زفاف</div>
+            <div class="couples-names">
+                أحمد
+                <span class="and">&amp;</span>
+                مريم
+            </div>
+        </div>
 
+        <div class="card">
+            <h3><i class="fa-regular fa-calendar-days"></i> الموعد والتاريخ</h3>
+            <p style="margin-top: 10px; font-weight: 600;">الخميس، 15 أكتوبر 2026</p>
+            <p>الساعة 7:00 مساءً</p>
+            
+            <div class="countdown" id="timer">
+                <div class="time-box"><span id="days">00</span><label>يوم</label></div>
+                <div class="time-box"><span id="hours">00</span><label>ساعة</label></div>
+                <div class="time-box"><span id="minutes">00</span><label>دقيقة</label></div>
+                <div class="time-box"><span id="seconds">00</span><label>ثانية</label></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-location-dot"></i> مكان الحفل</h3>
+            <p style="margin-top: 10px;">قاعة الفردوس - الكورنيش</p>
+            <a href="https://maps.google.com" target="_blank" class="btn"><i class="fa-solid fa-map-location-dot"></i> موقع القاعة على الخريطة</a>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-envelope-open-text"></i> تأكيد الحضور (RSVP)</h3>
+            <form id="rsvpForm" style="margin-top: 15px;">
+                <div class="form-group">
+                    <label>الاسم الكريم</label>
+                    <input type="text" required placeholder="ادخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label>هل ستحضر؟</label>
+                    <select required>
+                        <option value="yes">يشرفني الحضور</option>
+                        <option value="no">أعتذر عن الحضور</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">إرسال التأكيد</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const weddingDate = new Date("Oct 15, 2026 19:00:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            if (distance > 0) {
+                document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
